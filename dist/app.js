@@ -80,36 +80,51 @@ var thirdDinosaurJSON = function(){
 // 	});
 // };
 
+//Promise - Correct Way
+// var dinoGetter = function(){
+// 	firstDinosaurJSON().then(function(results){
+// 		results.forEach(function(dino){
+// 			dinosaurs.push(dino);
+// 		});
+// 		return secondDinosaurJSON();
+// 	}).then(function(results2){
+// 		results2.forEach(function(dino){
+// 			dinosaurs.push(dino);
+// 	});
+// 		return thirdDinosaurJSON();
+// }).then(function(results3){
+// 	results3.forEach(function(dino){
+// 		dinosaurs.push(dino);
+// 	});
+// 	console.log("dinosaurs", dinosaurs);
+// 	makeDinos();
+// });
+// };
 
+
+
+//This only works when they do not depend on each other
 var dinoGetter = function(){
-	firstDinosaurJSON().then(function(results){
-		results.forEach(function(dino){
-			dinosaurs.push(dino);
+	Promise.all([firstDinosaurJSON(), secondDinosaurJSON(), thirdDinosaurJSON()]).then(function(results){
+		console.log("results from promise.all", results);
+		results.forEach(function(result){
+			console.log("result", result);
+			result.forEach(function(dino){
+				console.log("dino", dino);
+				dinosaurs.push(dino);
+			});
 		});
-		return secondDinosaurJSON();
-	}).then(function(results2){
-		results2.forEach(function(dino){
-			dinosaurs.push(dino);
+		makeDinos();
+	}).catch(function(error){
+		console.log("error from Promise.all", error);
 	});
-		return thirdDinosaurJSON();
-}).then(function(results3){
-	results3.forEach(function(dino){
-		dinosaurs.push(dino);
-	});
-	console.log("dinosaurs", dinosaurs);
-	makeDinos();
-});
 };
-
-
-
 
 var makeDinos = function(){
 	dinosaurs.forEach(function(dino){
 		dom(dino);
 	});
 };
-
 
 var initializer = function(){
 	dinoGetter();
