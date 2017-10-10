@@ -2,10 +2,10 @@
 
 let outputDiv = $("#dinosaur");
 
-const createDomString = (words) => {
+const createDomString = (dinosaurs) => {
 	let dinoString = "";
 		dinoString += `<div class="shitGoesHere">`;
-		dinoString +=	`<h1>${words.name}</h1>`;
+		dinoString +=	`<h1>${dinosaurs.type}</h1>`;
 		dinoString += `</div>`;
 	printToDom(dinoString);
 }; 	
