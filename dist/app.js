@@ -29,9 +29,9 @@ var dinosaurs = [];
 // };
 
 //PROMISES works - promise Pryamid of DOOM
-var firstDinosaurJSON = function(){
-	return new Promise(function(resolve, reject){
-		$.ajax("./db/dinosaurs.json").done(function(data1){
+const firstDinosaurJSON = () => {
+	return new Promise((resolve, reject) => {
+		$.ajax("./db/dinosaurs.json").done((data1) => {
 			resolve(data1.dinosaurs1);
 		}).fail(function(error1){
 			reject(error1);
@@ -39,21 +39,21 @@ var firstDinosaurJSON = function(){
 	});
 };
 
-var secondDinosaurJSON = function(){
-	return new Promise(function(resolve, reject){
-		$.ajax("./db/dinosaurs2.json").done(function(data2){
+const secondDinosaurJSON = () => {
+	return new Promise((resolve, reject) => {
+		$.ajax("./db/dinosaurs2.json").done((data2) => {
 			resolve(data2.dinosaurs2);
-		}).fail(function(error2){
+		}).fail((error2) => {
 			reject(error2);
 		});
 	});
 };
 
-var thirdDinosaurJSON = function(){
-	return new Promise(function(resolve, reject){
-		$.ajax("./db/dinosaurs3.json").done(function(data3){
+const thirdDinosaurJSON = () => {
+	return new Promise((resolve, reject) => {
+		$.ajax("./db/dinosaurs3.json").done((data3) => {
 			resolve(data3.dinosaurs3);
-		}).fail(function(error3){
+		}).fail((error3) => {
 			reject(error3);
 		});
 	});
@@ -104,33 +104,33 @@ var thirdDinosaurJSON = function(){
 
 
 //This only works when they do not depend on each other
-var dinoGetter = function(){
+const dinoGetter = () => {
 	Promise.all([firstDinosaurJSON(), secondDinosaurJSON(), thirdDinosaurJSON()]).then(function(results){
 		console.log("results from promise.all", results);
-		results.forEach(function(result){
+		results.forEach((result) => {
 			console.log("result", result);
-			result.forEach(function(dino){
+			result.forEach((dino) => {
 				console.log("dino", dino);
 				dinosaurs.push(dino);
 			});
 		});
 		makeDinos();
-	}).catch(function(error){
+	}).catch((error) => {
 		console.log("error from Promise.all", error);
 	});
 };
 
-var makeDinos = function(){
-	dinosaurs.forEach(function(dino){
+const makeDinos = () => {
+	dinosaurs.forEach((dino) => {
 		dom(dino);
 	});
 };
 
-var initializer = function(){
+var initializer = () => {
 	dinoGetter();
 };
 
-var getDinosaurs = function(){
+var getDinosaurs = () => {
 	return dinosaurs;
 };
 
@@ -160,7 +160,7 @@ module.exports = createDomString;
 
 var data = require("./data");
 
-$(document).ready(function() {
+$(document).ready(() => {
 	data.initializer();
 });
 },{"./data":1}]},{},[3]);

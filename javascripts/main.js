@@ -2,6 +2,6 @@
 
 var data = require("./data");
 
-$(document).ready(function() {
+$(document).ready(() => {
 	data.initializer();
 });
