@@ -3,18 +3,21 @@
 		"type": "Tyrannosaurus Rex",
 		"bio": "Tyrannosaurus (meaning tyrant lizard) is a genus of coelurosaurian theropod dinosaur. ",
 		"img": "imgs/trex.jpg",
-		"info": "Carnivore"
+		"info": "Carnivore",
+		"catIds": [4]
 	},
 	{
 		"type": "Velociraptor",
 		"bio": "Velociraptor (meaning swift seizer in Latin) is a genus of dromaeosaurid theropod dinosaur that lived approximately 75 to 71 million years ago during the later part of the Cretaceous Period.",
 		"img": "imgs/velociraptor.jpg",
-		"info": "Carnivore"
+		"info": "Carnivore",
+		"catIds": [29, 2, 15, 16, 15, 14, 12, 16, 4]
 	},
 	{
 		"type": "Triceratops",
 		"bio": "Triceratops is a genus of herbivorous ceratopsid dinosaur that first appeared during the late Maastrichtian stage of the late Cretaceous period, about 68 million years ago in what is now North America.",
 		"img": "imgs/triceratops.jpg",
-		"info": "Herbivore"
+		"info": "Herbivore",
+		"catIds": [16, 3, 1]
 	}]
 }

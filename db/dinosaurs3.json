@@ -3,16 +3,19 @@
     "type": "Spinosaurus",
     "bio": "Spinosaurus (meaning spine lizard) is a genus of theropod dinosaur that lived in what now is North Africa, during the lower Albian to lower Cenomanian stages of the Cretaceous period, about 112 to 97 million years ago.",
     "img": "imgs/spinosaurus.png",
-    "info": "Piscivore"
+    "info": "Piscivore",
+    "catIds": [22, 6]
   }, {
     "type": "Ankylosaurus",
     "bio": "Ankylosaurus is a genus of armored dinosaur.",
     "img": "imgs/ankylosaurus.png",
-    "info": "Herbivore"
+    "info": "Herbivore",
+    "catIds": [4, 12, 6, 5, 8, 10, 14]
   }, {
     "type": "Archaeopteryx",
     "img": "imgs/archaeopteryx.png",
     "bio": "Archaeopteryx, sometimes referred to by its German name Urvogel (first bird), is a genus of bird-like dinosaurs that is transitional between non-avian feathered dinosaurs and modern birds.",
-    "info": "Carnivore"
+    "info": "Carnivore",
+    "catIds": [4, 11, 5, 21, 22, 27, 18, 26]
   }]
 }
