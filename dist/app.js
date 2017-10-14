@@ -33,7 +33,7 @@ const firstDinosaurJSON = () => {
 	return new Promise((resolve, reject) => {
 		$.ajax("./db/dinosaurs.json").done((data1) => {
 			resolve(data1.dinosaurs1);
-		}).fail(function(error1){
+		}).fail((error1) => {
 			reject(error1);
 		});
 	});
@@ -102,19 +102,38 @@ const thirdDinosaurJSON = () => {
 // };
 
 
+const allTheCats = () => {
+	return new Promise((resolve, reject) => {
+		$.ajax("./db/cats.json").done((catData) => {
+			resolve(catData.cats);
+		}).fail((error) => {
+			reject(error);
+		});
+	});
+};
+
 
 //This only works when they do not depend on each other
 const dinoGetter = () => {
-	Promise.all([firstDinosaurJSON(), secondDinosaurJSON(), thirdDinosaurJSON()]).then(function(results){
-		console.log("results from promise.all", results);
-		results.forEach((result) => {
-			console.log("result", result);
-			result.forEach((dino) => {
-				console.log("dino", dino);
-				dinosaurs.push(dino);
+	console.log("in dino getter");
+	Promise.all([firstDinosaurJSON(), secondDinosaurJSON(), thirdDinosaurJSON()]).then((results) => {
+		allTheCats().then((cats) => {
+			results.forEach((result) => {
+				result.forEach((dino) => {
+					dino.snacks = [];
+					dino.catIds.forEach((catId) => {
+						cats.forEach((cat) => {
+							if(cat.id === catId){
+								dino.snacks.push(cat);
+							}
+						});
+					});
+					dinosaurs.push(dino);
+				});
 			});
+			makeDinos();
 		});
-		makeDinos();
+		console.log("dino", dinosaurs);
 	}).catch((error) => {
 		console.log("error from Promise.all", error);
 	});
@@ -127,6 +146,7 @@ const makeDinos = () => {
 };
 
 var initializer = () => {
+	console.log("inside initializer");
 	dinoGetter();
 };
 
